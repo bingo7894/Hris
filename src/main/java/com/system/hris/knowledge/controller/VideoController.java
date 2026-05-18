@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/videos")
@@ -39,7 +40,7 @@ public class VideoController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PatchMapping("/admin/{id}")
+    @PutMapping("/admin/{id}")
     public ResponseEntity<MessageResponse> updateVideoByAdmin(@PathVariable Long id, @RequestBody VideoRequest videoRequest){
         return ResponseEntity.ok(videoService.updateVideoByAdmin(id,videoRequest));
     }
@@ -52,8 +53,11 @@ public class VideoController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/admin/{id}/publish")
-    public ResponseEntity<MessageResponse> toggleVideoPublishStatusByAdmin(@PathVariable Long id,@RequestParam boolean value){
-        return ResponseEntity.ok(videoService.toggleVideoPublishStatusByAdmin(id,value));
+    public ResponseEntity<MessageResponse> toggleVideoPublishStatusByAdmin(
+            @PathVariable Long id,
+            @RequestBody Map<String, Boolean> body) {
+        boolean value = body.getOrDefault("published", false);
+        return ResponseEntity.ok(videoService.toggleVideoPublishStatusByAdmin(id, value));
     }
 
     @PreAuthorize("hasRole('ADMIN')")

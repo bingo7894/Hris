@@ -15,7 +15,6 @@ public class VideoResponse {
     private String title;
     private String description;
     private Integer year;
-    private String rating;
 
     private Integer duration;
     private String src;
@@ -32,7 +31,6 @@ public class VideoResponse {
             String title,
             String description,
             Integer year,
-            String rating,
             Integer duration,
             String src,
             String poster,
@@ -45,7 +43,6 @@ public class VideoResponse {
         this.title = title;
         this.description = description;
         this.year = year;
-        this.rating= rating;
         this.duration = duration;
         this.src = src;
         this.poster = poster;
@@ -61,7 +58,6 @@ public class VideoResponse {
                 video.getTitle(),
                 video.getDescription(),
                 video.getYear(),
-                video.getRating(),
                 video.getDuration(),
                 video.getSrc(),
                 video.getPoster(),

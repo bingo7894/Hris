@@ -32,19 +32,19 @@ public class EmailServiceImpi implements EmailService {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(fromEmail);
             message.setTo(toEmail);
-            message.setSubject("Netflix Clone - Verify Your Email");
+            message.setSubject("CoreHR - Verify Your Email");
 
             String verificationLink = frontendUrl+"/verify-email?token="+token;
 
             String emailBody =
-                    "Welcome to Netflix Clone!\n\n"
+                    "Welcome to CoreHR!\n\n"
                         +"Thank you for registering. Please verify your email address by clicking the link below:\n\n"
                         +verificationLink
                         +"\n\n"
                         +"This link will expire in 24 hours.\n\n"
                             +"If you didn't create this account, please ignore this email.\n\n"
                             +"Best regards,\n"
-                            +"Netflix Clone Team";
+                            +"CoreHR Team";
 
             message.setText(emailBody);
             mailSender.send(message);
@@ -62,7 +62,7 @@ public class EmailServiceImpi implements EmailService {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(fromEmail);
             message.setTo(toEmail);
-            message.setSubject("Netflix Clone - Password Reset");
+            message.setSubject("CoreHR - Password Reset");
 
             String resetLink = frontendUrl + "/reset-password?token=" +token;
 
@@ -74,7 +74,7 @@ public class EmailServiceImpi implements EmailService {
                             + "This link will expire in 1 hour.\n\n"
                             + "If you didn't request a password reset, please ignore this email.\n\n"
                             + "Best regards,\n"
-                            + "Netflix Clone Team";
+                            + "CoreHR Team";
             message.setText(emailBody);
             mailSender.send(message);
 

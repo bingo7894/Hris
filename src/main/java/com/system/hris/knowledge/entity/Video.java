@@ -27,7 +27,6 @@ public class Video {
     private String description;
 
     private Integer year;
-    private String rating;
     private Integer duration;
 
     @Column(name = "src")

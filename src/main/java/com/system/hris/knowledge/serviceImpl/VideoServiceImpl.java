@@ -39,7 +39,6 @@ public class VideoServiceImpl implements VideoService {
         video.setTitle(videoRequest.getTitle());
         video.setDescription(videoRequest.getDescription());
         video.setYear(videoRequest.getYear());
-        video.setRating(videoRequest.getRating());
         video.setDuration(videoRequest.getDuration());
         video.setSrcUuid(videoRequest.getSrc());
         video.setPosterUuid(videoRequest.getPoster());
@@ -72,11 +71,10 @@ public class VideoServiceImpl implements VideoService {
         Video video = videoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Error: Video not found."));
 
-        // 2. เช็คก่อนอัปเดต ถ้าหน้าเว็บไม่ได้ส่งค่ามา (เป็น null) ให้ข้ามไป เพื่อรักษาข้อมูลเดิมไว้
+        // 2. เช็คก่อนอัปเดต ถ้าหน้าเว็บไม่ได้ส่งค่ามา
         if (videoRequest.getTitle() != null) video.setTitle(videoRequest.getTitle());
         if (videoRequest.getDescription() != null) video.setDescription(videoRequest.getDescription());
         if (videoRequest.getYear() != null) video.setYear(videoRequest.getYear());
-        if (videoRequest.getRating() != null) video.setRating(videoRequest.getRating());
         if (videoRequest.getDuration() != null) video.setDuration(videoRequest.getDuration());
         if (videoRequest.getSrc() != null) video.setSrcUuid(videoRequest.getSrc());
         if (videoRequest.getPoster() != null) video.setPosterUuid(videoRequest.getPoster());
@@ -84,7 +82,7 @@ public class VideoServiceImpl implements VideoService {
         // สถานะ Published เป็น boolean ธรรมดา อัปเดตได้เลย
         video.setPublished(videoRequest.isPublished());
 
-        // 3. วิธีอัปเดต Categories ที่ถูกต้อง (ห้ามใช้ .setCategories หรือ List.of() เด็ดขาด)
+        // 3. อัปเดต Categories ที่ถูกต้อง (ห้ามใช้ .setCategories หรือ List.of() เด็ดขาด)
         if (videoRequest.getCategories() != null) {
             video.getCategories().clear(); // ล้างของเก่า
             video.getCategories().addAll(videoRequest.getCategories()); // ยัดของใหม่

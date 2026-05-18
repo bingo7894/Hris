@@ -28,6 +28,9 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+
+		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		<sonar.token>squ_eba17ee30a31395bed557e47315df5015978e610</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -89,6 +92,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>
