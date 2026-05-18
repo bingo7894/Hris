@@ -12,6 +12,7 @@ pipeline {
         stage('2. Build Project') {
             steps {
                 // สั่งคอมไพล์โค้ด Spring Boot เพื่อเตรียมสแกน
+                sh 'chmod +x mvnw'
                 sh './mvnw clean compile'
             }
         }
