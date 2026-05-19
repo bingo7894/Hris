@@ -65,7 +65,7 @@ services:
 
   # 5. Jenkins (เครื่องมือสำหรับทำ CI/CD)
   jenkins:
-    image: jenkins/jenkins:lts-jdk17
+    image: jenkins/jenkins:lts-jdk21
     container_name: my_jenkins
     privileged: true
     user: root
